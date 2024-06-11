@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import CoordComponent from './components/CoordComponent.vue'
-import HumidityComponent from './components/HumidityComponent.vue'
-import HighlightsWrapper from './components/Highlights/HighlightsWrapper.vue'
-import SummaryComponent from './components/SummaryComponent.vue'
-</script>
-
 <template>
   <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
   <div class="page">
@@ -17,13 +10,43 @@ import SummaryComponent from './components/SummaryComponent.vue'
           </div>
           <div class="sections">
             <CoordComponent />
-            <HumidityComponent />
+            <HumidityComponent :forecast="forecast" :humidity="humidity" />
           </div>
         </div>
       </div>
     </main>
   </div>
 </template>
+
+<script lang="ts">
+import CoordComponent from './components/CoordComponent.vue'
+import HumidityComponent from './components/HumidityComponent.vue'
+import HighlightsWrapper from './components/Highlights/HighlightsWrapper.vue'
+import SummaryComponent from './components/SummaryComponent.vue'
+import { mapActions, mapState } from 'pinia'
+import { useWeatherStore } from './stores/weather'
+
+export default {
+  name: 'App',
+  components: {
+    CoordComponent,
+    HumidityComponent,
+    HighlightsWrapper,
+    SummaryComponent
+  },
+  computed: {
+    ...mapState(useWeatherStore, ['forecast', 'humidity'])
+  },
+  mounted() {
+    console.log('MOUNTED')
+    this.getForecast()
+    // this.test()
+  },
+  methods: {
+    ...mapActions(useWeatherStore, ['getForecast', 'test'])
+  }
+}
+</script>
 
 <style lang="sass">
 *

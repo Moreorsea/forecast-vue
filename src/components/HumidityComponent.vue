@@ -5,7 +5,7 @@
         <img class="block-bottom-pic pic-humidity" src="../assets/humidity.png" />
         <div class="block-bottom-texts">
           <div class="block-bottom-text-block">
-            <div class="block-bottom-text-block-title">Humidity: 60 %</div>
+            <div class="block-bottom-text-block-title">Humidity: {{ this.humidity }} %</div>
             <div class="block-bottom-text-block-desc">
               Humidity is the concentration of water vapor present in the air. Water vapor, the
               gaseous state of water, is generally invisible to the human eye.
@@ -19,3 +19,20 @@
     </div>
   </section>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'HumidityComponent',
+  props: {
+    forecast: {
+      type: Object
+    },
+    humidity: {
+      type: Number
+    }
+  },
+  mounted() {
+    console.log('THIS FORECAST', this.forecast)
+  }
+}
+</script>

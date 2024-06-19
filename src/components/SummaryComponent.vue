@@ -5,17 +5,29 @@
         <input type="text" class="search" />
       </div>
       <div class="summary">
-        <img class="pic-main" src="../assets/weather-main/thunderstorm.png" />
+        <img class="pic-main" :src="this.forecast.iconUrl" />
         <div class="weather">
-          <div class="temp">14 °C</div>
-          <div class="weather-desc text-block">Thunderstorm</div>
+          <div class="temp">{{ Math.round(this.forecast.temp) }} °C</div>
+          <div class="weather-desc text-block">{{ this.forecast.description }}</div>
         </div>
-        <div class="city text-block">Paris, FR</div>
-        <div class="date text-block">Thu, March 16, 2023</div>
+        <div class="city text-block">{{ this.city.name }}, {{ this.city.country }}</div>
+        <div class="date text-block">{{ this.dt }}</div>
       </div>
     </div>
   </section>
 </template>
+
+<script lang="ts">
+import { mapState } from 'pinia'
+import { useWeatherStore } from '../stores/weather'
+
+export default {
+  name: 'SummaryComponent',
+  computed: {
+    ...mapState(useWeatherStore, ['forecast', 'city', 'dt'])
+  }
+}
+</script>
 
 <style lang="sass">
 .section-left
@@ -73,6 +85,7 @@
   height: 60px
   margin: 20px 0 12px
   object-fit: contain
+  transform: scale(2)
 
 .city
   font-size: 24px

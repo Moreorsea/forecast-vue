@@ -20,11 +20,21 @@
   </section>
 </template>
 
-<script setup>
+<script lang="ts">
 import WindComponent from './WindComponent.vue'
 import PressureComponent from './PressureComponent.vue'
 import SunriseSunsetComponent from './SunriseSunsetComponent.vue'
 import HighlightsSmallCard from './HighlightSmallCard.vue'
+
+export default {
+  name: 'HighlightsWrapper',
+  components: {
+    WindComponent,
+    PressureComponent,
+    SunriseSunsetComponent,
+    HighlightsSmallCard
+  }
+}
 </script>
 
 <style lang="sass">

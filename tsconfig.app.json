@@ -9,6 +9,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "strict": true,
+    "target": "ES2020",
+    "noImplicitThis": false,
+    "moduleResolution": "node"
   }
 }

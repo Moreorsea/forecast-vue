@@ -21,18 +21,16 @@
 </template>
 
 <script lang="ts">
+import { useWeatherStore } from '@/stores/weather'
+import { mapState } from 'pinia'
+
 export default {
   name: 'HumidityComponent',
-  props: {
-    forecast: {
-      type: Object
-    },
-    humidity: {
-      type: Number
-    }
+  computed: {
+    ...mapState(useWeatherStore, ['forecast', 'humidity'])
   },
   mounted() {
-    console.log('THIS FORECAST', this.forecast)
+    console.log('THIS FORECAST', this.forecast, this.humidity)
   }
 }
 </script>

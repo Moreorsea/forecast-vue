@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+Forecast-layout-master
 
 /cypress/videos/
 /cypress/screenshots/
@@ -28,4 +29,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-Forecast-layout-master
+

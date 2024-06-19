@@ -9,7 +9,7 @@
             <HighlightsWrapper />
           </div>
           <div class="sections">
-            <CoordComponent />
+            <CoordComponent :lat="lat" :lon="lon" />
             <HumidityComponent :forecast="forecast" :humidity="humidity" />
           </div>
         </div>
@@ -35,7 +35,7 @@ export default {
     SummaryComponent
   },
   computed: {
-    ...mapState(useWeatherStore, ['forecast', 'humidity'])
+    ...mapState(useWeatherStore, ['forecast', 'humidity', 'lat', 'lon'])
   },
   mounted() {
     console.log('MOUNTED')

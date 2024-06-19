@@ -7,14 +7,25 @@
         <div class="state">
           <div class="state-pic"></div>
           <div class="state-title">Sunrise</div>
-          <div class="state-time">07:31:42</div>
+          <div class="state-time">{{ this.forecast.sunrise }}</div>
         </div>
         <div class="state">
           <div class="state-pic state-pic--flipped"></div>
           <div class="state-title">Sunset</div>
-          <div class="state-time">18:34:19</div>
+          <div class="state-time">{{ this.forecast.sunset }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { mapState } from 'pinia'
+import { useWeatherStore } from '../../stores/weather'
+export default {
+  name: 'SunriseSunsetComponent',
+  computed: {
+    ...mapState(useWeatherStore, ['forecast'])
+  }
+}
+</script>

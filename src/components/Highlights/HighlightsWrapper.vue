@@ -5,15 +5,15 @@
       <div class="highlights-wrapper">
         <div class="highlight">
           <WindComponent />
-          <HighlightsSmallCard />
+          <WindGustsComponent />
         </div>
         <div class="highlight">
           <PressureComponent />
-          <HighlightsSmallCard />
+          <FeelsLikeComponent />
         </div>
         <div class="highlight">
           <SunriseSunsetComponent />
-          <HighlightsSmallCard />
+          <CloudinessComponent />
         </div>
       </div>
     </div>
@@ -24,7 +24,9 @@
 import WindComponent from './WindComponent.vue'
 import PressureComponent from './PressureComponent.vue'
 import SunriseSunsetComponent from './SunriseSunsetComponent.vue'
-import HighlightsSmallCard from './HighlightSmallCard.vue'
+import WindGustsComponent from './WindGustsComponent.vue'
+import FeelsLikeComponent from './FeelsLikeComponent.vue'
+import CloudinessComponent from './CloudinessComponent.vue'
 
 export default {
   name: 'HighlightsWrapper',
@@ -32,7 +34,9 @@ export default {
     WindComponent,
     PressureComponent,
     SunriseSunsetComponent,
-    HighlightsSmallCard
+    WindGustsComponent,
+    FeelsLikeComponent,
+    CloudinessComponent
   }
 }
 </script>
@@ -178,6 +182,10 @@ export default {
   background: url('/src/assets/gradient-2.jpg') no-repeat 50% 50%
   background-size: cover
   border-radius: 8px
+  min-height: 98px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
 
   &-title
     font-size: 13px

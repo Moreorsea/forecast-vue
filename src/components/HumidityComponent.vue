@@ -27,10 +27,7 @@ import { mapState } from 'pinia'
 export default {
   name: 'HumidityComponent',
   computed: {
-    ...mapState(useWeatherStore, ['forecast', 'humidity'])
-  },
-  mounted() {
-    console.log('THIS FORECAST', this.forecast, this.humidity)
+    ...mapState(useWeatherStore, ['humidity'])
   }
 }
 </script>

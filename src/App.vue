@@ -9,7 +9,7 @@
             <HighlightsWrapper />
           </div>
           <div class="sections">
-            <CoordComponent :lat="lat" :lon="lon" />
+            <CoordComponent />
             <HumidityComponent :forecast="forecast" :humidity="humidity" />
           </div>
         </div>
@@ -38,12 +38,10 @@ export default {
     ...mapState(useWeatherStore, ['forecast', 'humidity', 'lat', 'lon'])
   },
   mounted() {
-    console.log('MOUNTED')
     this.getForecast()
-    // this.test()
   },
   methods: {
-    ...mapActions(useWeatherStore, ['getForecast', 'test'])
+    ...mapActions(useWeatherStore, ['getForecast'])
   }
 }
 </script>

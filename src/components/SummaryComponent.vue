@@ -11,7 +11,7 @@
           <div class="weather-desc text-block">{{ this.forecast.description }}</div>
         </div>
         <div class="city text-block">{{ this.city.name }}, {{ this.city.country }}</div>
-        <div class="date text-block">{{ this.dt }}</div>
+        <div class="date text-block">{{ this.city.dt }}</div>
       </div>
     </div>
   </section>
@@ -24,7 +24,7 @@ import { useWeatherStore } from '../stores/weather'
 export default {
   name: 'SummaryComponent',
   computed: {
-    ...mapState(useWeatherStore, ['forecast', 'city', 'dt'])
+    ...mapState(useWeatherStore, ['forecast', 'city'])
   }
 }
 </script>

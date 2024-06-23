@@ -1,9 +1,9 @@
 <template>
   <div class="card-small">
     <div class="card-small-title">Wind gusts</div>
-    <div class="card-small-info">
+    <div v-if="this.wind.gust" class="card-small-info">
       <div class="card-small-data">
-        <div class="info-main-num">8.4</div>
+        <div class="info-main-num">{{ this.wind.gust }}</div>
         <div class="info-main-text">m/s</div>
       </div>
       <div class="card-small-hint">
@@ -19,5 +19,21 @@
         </div>
       </div>
     </div>
+
+    <div v-else>
+      <div class="card-small-text text-egorova">Без порывов ветра</div>
+    </div>
   </div>
 </template>
+
+<script lang="ts">
+import { mapState } from 'pinia'
+import { useWeatherStore } from '../../stores/weather'
+
+export default {
+  name: 'WindGustsComponent',
+  computed: {
+    ...mapState(useWeatherStore, ['wind'])
+  }
+}
+</script>

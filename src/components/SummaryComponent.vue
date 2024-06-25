@@ -2,7 +2,13 @@
   <section class="section section-left">
     <div class="info">
       <div class="city-inner">
-        <input type="text" class="search" />
+        <input
+          type="text"
+          class="search"
+          @input="searchText"
+          v-model.trim="searchPattern"
+          v-on:keydown.enter="submitCity"
+        />
       </div>
       <div class="summary">
         <img class="pic-main" :src="this.forecast.iconUrl" />
@@ -18,13 +24,29 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { useWeatherStore } from '../stores/weather'
 
 export default {
   name: 'SummaryComponent',
+  data() {
+    return {
+      searchPattern: ''
+    }
+  },
   computed: {
     ...mapState(useWeatherStore, ['forecast', 'city'])
+  },
+  methods: {
+    ...mapActions(useWeatherStore, ['getForecast', 'updateCity']),
+    searchText(e: Event) {
+      const city = (e as unknown as HTMLInputElement).target.value
+      this.searchPattern = city
+    },
+    submitCity() {
+      this.updateCity(this.searchPattern)
+      this.getForecast()
+    }
   }
 }
 </script>

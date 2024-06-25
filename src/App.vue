@@ -10,7 +10,7 @@
           </div>
           <div class="sections">
             <CoordComponent />
-            <HumidityComponent :forecast="forecast" :humidity="humidity" />
+            <HumidityComponent />
           </div>
         </div>
       </div>
@@ -34,9 +34,6 @@ export default {
     HighlightsWrapper,
     SummaryComponent
   },
-  computed: {
-    ...mapState(useWeatherStore, ['forecast', 'humidity', 'lat', 'lon'])
-  },
   mounted() {
     this.getForecast()
   },
@@ -50,16 +47,6 @@ export default {
 *
   box-sizing: border-box
   font-size: 16px
-
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-// .inter-<uniquifier>
-//   font-family: "Inter", sans-serif
-//   font-optical-sizing: auto
-//   font-weight: 400
-//   font-style: normal
-
 
 html,
 body

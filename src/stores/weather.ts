@@ -64,7 +64,7 @@ export const useWeatherStore = defineStore('weather', {
     getForecast() {
       axios({
         method: 'get',
-        url: `https://api.openweathermap.org/data/2.5/weather?lat=${this.coord.lat}&lon=${this.coord.lon}&appid=219cda179dfba493ef2e271ffb914ecc&units=metric`
+        url: `https://api.openweathermap.org/data/2.5/weather?q=${this.city.name}&lat=${this.city.name}&lon=${this.coord.lon}&appid=219cda179dfba493ef2e271ffb914ecc&units=metric&lang=ru`
       }).then((res: any) => {
         this.updateState(res.data)
       })
@@ -77,7 +77,7 @@ export const useWeatherStore = defineStore('weather', {
 
       this.forecast = {
         temp: main.temp,
-        description: weather[0].main,
+        description: weather[0].description,
         sunrise: dayjs.unix(sys.sunrise).format('HH:mm:ss'),
         sunset: dayjs.unix(sys.sunset).format('HH:mm:ss'),
         iconUrl: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
@@ -98,6 +98,9 @@ export const useWeatherStore = defineStore('weather', {
       this.clouds = clouds.all
 
       this.feelsLike = feels_like
+    },
+    updateCity(newCity: string) {
+      this.city.name = newCity
     }
   }
 })

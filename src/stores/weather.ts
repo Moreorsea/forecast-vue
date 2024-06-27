@@ -78,8 +78,8 @@ export const useWeatherStore = defineStore('weather', {
       this.forecast = {
         temp: main.temp,
         description: weather[0].description,
-        sunrise: dayjs.unix(sys.sunrise).format('HH:mm:ss'),
-        sunset: dayjs.unix(sys.sunset).format('HH:mm:ss'),
+        sunrise: dayjs.unix(sys.sunrise + timezone).format('HH:mm:ss'),
+        sunset: dayjs.unix(sys.sunset + timezone).format('HH:mm:ss'),
         iconUrl: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
       }
 
@@ -89,7 +89,7 @@ export const useWeatherStore = defineStore('weather', {
 
       this.city = {
         name,
-        dt: dayjs.unix(dt + timezone).format('ddd, MMM D, YYYY'),
+        dt: dayjs.unix(dt).format('ddd, MMM D, YYYY'),
         country: sys.country
       }
 

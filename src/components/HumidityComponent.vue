@@ -5,13 +5,13 @@
         <img class="block-bottom-pic pic-humidity" src="../assets/humidity.png" />
         <div class="block-bottom-texts">
           <div class="block-bottom-text-block">
-            <div class="block-bottom-text-block-title">Humidity: {{ this.humidity }} %</div>
+            <div class="block-bottom-text-block-title">
+              {{ $t('humidity.title') }}: {{ this.humidity }} %
+            </div>
             <div class="block-bottom-text-block-desc">
-              Humidity is the concentration of water vapor present in the air. Water vapor, the
-              gaseous state of water, is generally invisible to the human eye.
+              {{ $t('humidity.text') }}
               <br /><br />
-              The same amount of water vapor results in higher relative humidity in cool air than
-              warm air.
+              {{ $t('humidity.text2') }}
             </div>
           </div>
         </div>

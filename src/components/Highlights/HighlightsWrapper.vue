@@ -1,7 +1,14 @@
 <template>
   <section class="section section-right">
     <div class="section highlights">
-      <div class="title">Today's Highlights</div>
+      <div class="highlights-wrapper">
+        <div class="title">Today's Highlights</div>
+        <div class="lang">
+          <div :class="{ active: this.lang === 'ru' }" @click="changeLang('ru')">RU</div>
+          <span>|</span>
+          <div :class="{ active: this.lang === 'en' }" @click="changeLang('en')">EN</div>
+        </div>
+      </div>
       <div class="highlights-wrapper">
         <div class="highlight">
           <WindComponent />
@@ -30,6 +37,11 @@ import CloudinessComponent from './CloudinessComponent.vue'
 
 export default {
   name: 'HighlightsWrapper',
+  data() {
+    return {
+      lang: 'ru'
+    }
+  },
   components: {
     WindComponent,
     PressureComponent,
@@ -37,6 +49,12 @@ export default {
     WindGustsComponent,
     FeelsLikeComponent,
     CloudinessComponent
+  },
+  methods: {
+    changeLang(lang: string) {
+      this.$i18next.changeLanguage(lang)
+      this.lang = lang
+    }
   }
 }
 </script>
@@ -175,6 +193,19 @@ export default {
     @media (max-width: 1199px)
       padding-bottom: 1.5px
       font-size: 12px
+
+.lang
+  display: flex
+  width: 70px
+  justify-content: space-between
+
+  div
+    cursor: pointer
+    opacity: 0.5
+
+    &.active
+      font-weight: bold
+      opacity: 1
 
 .card-small
   margin-top: 12px

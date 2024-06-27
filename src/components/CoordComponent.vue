@@ -5,16 +5,19 @@
         <img class="block-bottom-pic pic-coords" src="../assets/compass.png" />
         <div class="block-bottom-texts">
           <div class="block-bottom-text-block">
-            <div class="block-bottom-text-block-title">Longitude: {{ this.coord.lon }}</div>
+            <div class="block-bottom-text-block-title">
+              {{ $t('coord.lon') }}: {{ this.coord.lon }}
+            </div>
             <div class="block-bottom-text-block-desc">
-              Longitude measures distance east or west of the prime meridian.
+              {{ $t('coord.lonText') }}
             </div>
           </div>
           <div class="block-bottom-text-block">
-            <div class="block-bottom-text-block-title">Latitude: {{ this.coord.lat }}</div>
+            <div class="block-bottom-text-block-title">
+              {{ $t('coord.lat') }}: {{ this.coord.lat }}
+            </div>
             <div class="block-bottom-text-block-desc">
-              Latitude lines start at the equator (0 degrees latitude) and run east and west,
-              parallel to the equator.
+              {{ $t('coord.latText') }}
             </div>
           </div>
         </div>

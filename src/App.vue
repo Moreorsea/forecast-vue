@@ -119,6 +119,7 @@ a
     &-desc
       font-size: 13px
       color: rgba(#ffffff, 0.75)
+      min-height: 40px
 
 .pic-humidity
   background-image: url('/src/assets/img/humidity.png')
